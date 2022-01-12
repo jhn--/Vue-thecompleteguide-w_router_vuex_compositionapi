@@ -23,6 +23,7 @@
         <a
           href="#"
           class="card-footer-item has-background-danger-dark has-text-white"
+          @click="deleteResource(id)"
           >Delete</a
         >
       </footer>
@@ -32,6 +33,7 @@
 
 <script>
 export default {
+  inject: ['deleteResource'],
   props: {
     id: {
       type: String,
@@ -53,6 +55,12 @@ export default {
       type: String,
       required: false,
     },
+  },
+  methods: {
+    // deleteResource() {
+    //   // console.log('delete: ' + this.id);
+    //   this.$emit('delete-resource', this.id);
+    // },
   },
 };
 </script>

@@ -1,22 +1,34 @@
 <template>
   <TheHeading :heading="heading" />
-  <ResourceList :resources="storedResources" />
+  <TheNavbar @select-tab="selectTab" />
+  <keep-alive>
+    <component
+      :is="selectedTab"
+      :resources="storedResources"
+      @add-resource="addNewResource"
+    />
+  </keep-alive>
 </template>
 
 <script>
 import { uuid } from 'vue-uuid';
 
 import ResourceList from './components/Resources/ResourceList.vue';
+import AddResource from './components/Resources/AddResource.vue';
 import TheHeading from './components/layouts/TheHeading.vue';
+import TheNavbar from './components/layouts/TheNavbar.vue';
 
 export default {
   components: {
     ResourceList,
+    AddResource,
     TheHeading,
+    TheNavbar,
   },
   data() {
     return {
       heading: 'Learning Resources',
+      selectedTab: 'resource-list',
       storedResources: [
         {
           id: uuid.v4(),
@@ -42,7 +54,28 @@ export default {
       ],
     };
   },
-  methods: {},
+  provide() {
+    return {
+      deleteResource: this.deleteExistingResource,
+    };
+  },
+  methods: {
+    selectTab(cmp) {
+      this.selectedTab = cmp;
+    },
+    addNewResource(resource) {
+      console.log(resource);
+      resource.id = uuid.v4();
+      this.storedResources.push(resource);
+      this.selectTab('resource-list');
+    },
+    deleteExistingResource(id) {
+      console.log(id);
+      this.storedResources = this.storedResources.filter(
+        (resource) => resource.id !== id
+      );
+    },
+  },
   mounted() {
     //   console.log('mounted');
     console.log(this.storedResources);
