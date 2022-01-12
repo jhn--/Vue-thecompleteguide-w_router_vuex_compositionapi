@@ -1,23 +1,15 @@
 <template>
-  <ul>
-    <li v-for="resource in storedResources" :key="resource.id">
-      <ResourceCard
-        :id="resource.id"
-        :title="resource.title"
-        :description="resource.description"
-        :link="resource.link"
-      />
-    </li>
-  </ul>
+  <ResourceList :resources="storedResources" />
 </template>
 
 <script>
 import { uuid } from 'vue-uuid';
-import ResourceCard from './components/Resources/ResourceCard.vue';
+
+import ResourceList from './components/Resources/ResourceList.vue';
 
 export default {
   components: {
-    ResourceCard,
+    ResourceList,
   },
   data() {
     return {
