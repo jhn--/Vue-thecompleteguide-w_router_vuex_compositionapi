@@ -19,18 +19,21 @@ export default {
           title: 'VueJS 3',
           description: 'VueJS 3 Documentation',
           link: 'https://v3.vuejs.org/guide/introduction.html',
+          logo: 'logo-vue',
         },
         {
           id: uuid.v4(),
           title: 'ReactJS',
           description: 'React Documentation',
           link: 'https://reactjs.org/docs/getting-started.html',
+          logo: 'logo-react',
         },
         {
           id: uuid.v4(),
           title: 'Angular',
           description: 'Angular Documentation',
           link: 'https://angular.io/docs',
+          logo: 'logo-angular',
         },
       ],
     };

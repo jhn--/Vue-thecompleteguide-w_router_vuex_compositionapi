@@ -1,13 +1,15 @@
 <template>
   <ul>
-    <li v-for="resource in resources" :key="resource.id">
-      <ResourceCard
-        :id="resource.id"
-        :title="resource.title"
-        :description="resource.description"
-        :link="resource.link"
-      />
-    </li>
+    <resource-card
+      v-for="resource in resources"
+      :key="resource.id"
+      :id="resource.id"
+      :title="resource.title"
+      :description="resource.description"
+      :link="resource.link"
+      :logo="resource.logo"
+    >
+    </resource-card>
   </ul>
 </template>
 
