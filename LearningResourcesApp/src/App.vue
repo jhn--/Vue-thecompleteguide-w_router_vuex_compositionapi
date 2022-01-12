@@ -1,18 +1,24 @@
 <template>
   <ul>
     <li v-for="resource in storedResources" :key="resource.id">
-      {{ resource.id }}
-      {{ resource.title }}
-      {{ resource.description }}
-      {{ resource.link }}
+      <ResourceCard
+        :id="resource.id"
+        :title="resource.title"
+        :description="resource.description"
+        :link="resource.link"
+      />
     </li>
   </ul>
 </template>
 
 <script>
 import { uuid } from 'vue-uuid';
+import ResourceCard from './components/Resources/ResourceCard.vue';
 
 export default {
+  components: {
+    ResourceCard,
+  },
   data() {
     return {
       storedResources: [
@@ -46,4 +52,5 @@ export default {
 </script>
 
 <style>
+@import 'https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css';
 </style>
