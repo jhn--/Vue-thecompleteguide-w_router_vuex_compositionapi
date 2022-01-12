@@ -1,4 +1,5 @@
 <template>
+  <TheHeading :heading="heading" />
   <ResourceList :resources="storedResources" />
 </template>
 
@@ -6,13 +7,16 @@
 import { uuid } from 'vue-uuid';
 
 import ResourceList from './components/Resources/ResourceList.vue';
+import TheHeading from './components/layouts/TheHeading.vue';
 
 export default {
   components: {
     ResourceList,
+    TheHeading,
   },
   data() {
     return {
+      heading: 'Learning Resources',
       storedResources: [
         {
           id: uuid.v4(),
