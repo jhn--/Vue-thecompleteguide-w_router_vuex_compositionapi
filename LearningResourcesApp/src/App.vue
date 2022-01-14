@@ -70,7 +70,7 @@ export default {
       this.selectTab('resource-list');
     },
     deleteExistingResource(id) {
-      console.log(id);
+      // console.log(id);
       this.storedResources = this.storedResources.filter(
         (resource) => resource.id !== id
       );
